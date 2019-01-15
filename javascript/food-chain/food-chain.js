@@ -23,12 +23,14 @@ Song.prototype.verse = (line) => {
 Song.prototype.verses = (line, line2, firstLine) => {
 let str = []
 
-	for (let i = 1; i < line2; i++){
+	for (let i = 1; i <= line2; i++){
 		str.push(repeat(i) + "\n")
 	}
 
 	if (line2 === 8) {
-		return str.join("").split(/,(.+)/).join("") + "I know an old lady who swallowed a horse.\n" + specialPhrases[line2] + "\n"
+		let format = str[str.length - 1]
+		str.pop()
+		return str.join("").split(/,(.+)/).join("") + format
 	} else{
 		if (line === 1){
 			return repeat(line) + "\n" + repeat(line2).join("") + "\n"
@@ -73,5 +75,4 @@ const repeat = (line) => {
 
 
 
-// try copyWithin to switch statements
 
