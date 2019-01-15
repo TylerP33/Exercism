@@ -1,7 +1,18 @@
 export default function Song() {}
 
 let lastLine = "I don't know why she swallowed the fly. Perhaps she'll die.\n"
-let animal = {1: 'fly', 2: 'spider', 3: 'bird', 4: 'cat',5: 'dog',6: 'goat',7: 'cow',8: 'horse'}
+
+let animal = {
+	1: 'fly', 
+	2: 'spider', 
+	3: 'bird', 
+	4: 'cat',
+	5: 'dog',
+	6: 'goat',
+	7: 'cow',
+	8: 'horse'
+}
+
 let specialPhrases = {
 	2: 'It wriggled and jiggled and tickled inside her.\n',
 	3: 'How absurd to swallow a bird!\n',
@@ -20,7 +31,7 @@ Song.prototype.verse = (line) => {
 	}
 }
 
-Song.prototype.verses = (line, line2, firstLine) => {
+Song.prototype.verses = (line, line2) => {
 let str = []
 
 	for (let i = 1; i <= line2; i++){
