@@ -1,7 +1,5 @@
 export default function Song() {}
 
-let lastLine = "I don't know why she swallowed the fly. Perhaps she'll die.\n"
-
 let animal = {
 	1: 'fly', 
 	2: 'spider', 
@@ -24,12 +22,9 @@ let specialPhrases = {
 }
 
 Song.prototype.verse = (line) => {
-	if (line === 1 || line === 8){
-		return repeat(line)
-	} else{
-		return repeat(line).join("")
-	}
+	return line === 1 || line === 8 ? repeat(line) : repeat(line).join("")
 }
+
 
 Song.prototype.verses = (line, line2) => {
 let str = []
@@ -52,8 +47,7 @@ let str = []
 }
 
 
-const format = (rep, firstLine, line) => {
-	if (line){
+const format = (rep, firstLine, lastLine, line) => {
 		rep.shift()
 		rep.reverse()
 		rep[rep.length - 2] = `She swallowed the bird to catch the spider that wriggled and jiggled and tickled inside her.\n`
@@ -61,12 +55,12 @@ const format = (rep, firstLine, line) => {
 		rep.unshift(firstLine)
 		rep.push(lastLine)
 		return rep
-	}
 }
 
 
 const repeat = (line) => {
 	let firstLine = `I know an old lady who swallowed a ${animal[line]}.\n`
+	let lastLine = "I don't know why she swallowed the fly. Perhaps she'll die.\n"
 	let counter = 0
 	let rep = []
 
@@ -80,7 +74,7 @@ const repeat = (line) => {
 			rep.push(`She swallowed the ${animal[counter]} to catch the ${animal[counter - 1]}.\n`)
 		}
 	}
-	return format(rep, firstLine, line)
+	return format(rep, firstLine, lastLine, line)
 }
 
 
